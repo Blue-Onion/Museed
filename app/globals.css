@@ -120,3 +120,9 @@
     @apply bg-background text-foreground;
   }
 }
+.gradient-title {
+  @apply font-extrabold 
+    bg-gradient-to-br from-[#ff9a00] via-[#ff6a00] to-[#ff3c38]
+    bg-clip-text text-transparent 
+    tracking-tighter pr-2;
+}

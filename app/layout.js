@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,18 +20,19 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col relative`}>
         {/* Background */}
-        <div className="absolute w-full h-full -z-10 bg-[url('/bg.png')] bg-cover bg-center opacity-100"></div>
+        <div className="fixed inset-0 -z-10 bg-[url('/bg.png')] bg-cover bg-center opacity-100" ></div>
 
-        {/* Main Content */}
-        <main className=" min-h-screen mx-auto container">
+        {/* Navbar */}
+        <Navbar />
+
+        {/* Main content grows */}
+        <main className="min-h-screen my-16 md:my-32">
           {children}
         </main>
 
-        {/* Footer */}
+        {/* Footer at bottom */}
         <footer className="bg-black bg-opacity-60 text-white px-4 py-6">
           <div className="mx-auto text-center px-4 text-gray-300">
             © {new Date().getFullYear()} Blue Onion. All rights reserved.
@@ -38,5 +40,6 @@ export default function RootLayout({ children }) {
         </footer>
       </body>
     </html>
+
   );
 }
